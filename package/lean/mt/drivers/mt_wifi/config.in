@@ -271,18 +271,21 @@ config MTK_DBDC_MODE
 	depends on MTK_CHIP_MT7615E || MTK_CHIP_MT7626
 	select MULTI_PROFILE_SUPPORT
 	select DEFAULT_5G_PROFILE
-	default y
+	default y if TARGET_ramips_mt7621_DEVICE_phicomm_k2p
+	default n
 
 config MTK_MULTI_PROFILE_SUPPORT
 	bool "Multi Profile Support"
 	depends on MTK_DBDC_MODE
-	default y
+	default y if TARGET_ramips_mt7621_DEVICE_phicomm_k2p
+	default n
 
 config MTK_DEFAULT_5G_PROFILE
 	bool "5G default profile for DBDC"
 	depends on MTK_DBDC_MODE
 #	depends on MTK_MULTI_PROFILE_SUPPORT
-	default y
+	default y if TARGET_ramips_mt7621_DEVICE_phicomm_k2p
+	default n
 
 config MTK_WSC_INCLUDED
 	bool "WSC (WiFi Simple Config)"
@@ -754,7 +757,7 @@ config MTK_RADIUS_ACCOUNTING_SUPPORT
 config MTK_GREENAP_SUPPORT
 	bool "GreenAP Support"
 	depends on MTK_MT_AP_SUPPORT
-	default y
+	default n
 
 config MTK_PCIE_ASPM_DYM_CTRL_SUPPORT
 	bool "Pcie Aspm Dynamic Control Support"
@@ -799,7 +802,7 @@ config MTK_INTERWORKING
 
 config MTK_LINUX_NET_TXQ_SUPPORT
 	bool "NET TX Queue Support"
-	default n
+	default y
 
 #config WIFI_FWD_SUPPORT
 #        bool "WiFi Forwarding Support"
